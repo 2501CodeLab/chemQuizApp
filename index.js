@@ -85,7 +85,7 @@ $('#summaryPageLoader').click(function() {
 function getData() {
   var db = new Dexie("questions_Database");
   db.version(1).stores({
-    questions: 'id,questionsIndex'
+    questions: 'id'
   });
 
   db.on('ready', function () {
@@ -98,7 +98,7 @@ function getData() {
     // database has already been populated.
     return db.questions.count(function (count) {
       if (count > 0) {
-        console.log("Already populated");
+        console.log("Data already populated onto database.");
       } else {
         console.log("Database is empty. Populating from ajax call...");
         // We want framework to continue waiting, so we encapsulate
